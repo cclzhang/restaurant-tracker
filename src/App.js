@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
 import axios from 'axios';
-import FavList from './components/FavList.js';
-import List from './components/list.js'
-import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import List from './components/List'
+import Form from './components/Form'
+
 import './App.css';
 
 
@@ -27,9 +26,12 @@ class App extends Component{
       for (let key in favFromDb) {
         const restaurantInfo = {
           key: key,
-          name: favFromDb[key],
+          name: favFromDb[key].name,
+          url: favFromDb[key].url,
+          type: favFromDb[key].type,
         }
         favToBeSet.push(restaurantInfo);
+        // console.log(wantFromDb[key]);
       }
       this.setState({
         favourites: favToBeSet,
@@ -44,6 +46,7 @@ class App extends Component{
           key: key,
           name: wantFromDb[key].name,
           url: wantFromDb[key].url,
+          type: wantFromDb[key].type,
         }
         wantToBeSet.push(restaurantInfo);
         // console.log(wantFromDb[key]);
@@ -56,20 +59,14 @@ class App extends Component{
 
   handleChange = (e) => {
     // console.log('things are changing', e.target.value);
-
-
     this.setState({
       userInput: e.target.value,
     })
-
-
   }
 
   wantButtonHandler= (e) => {
     e.preventDefault();
     const dbRef = firebase.database().ref("wantList");
-
-
     axios({
       url: 'https://developers.zomato.com/api/v2.1/search',
       method: 'GET',
@@ -95,18 +92,6 @@ class App extends Component{
         userInput: "",
       })
     })
-  }
-
-  findMatches = (wordToMatch, restaurants) =>{
-    const array = restaurants.filter(restaurant => {
-      const regEx = new RegExp(wordToMatch);
-      return restaurant.restaurant;
-      // console.log(restaurant)
-    })
-    // console.log(array.map((restaurant)=>{
-    //   console.log(restaurant.restaurant.name)
-    //   console.log(restaurant.restaurant.url)
-    // }))
   }
 
 
@@ -136,45 +121,25 @@ class App extends Component{
     })
   }
 
-  removeFav = (restaurantKey) => {
-    const dbRef = firebase.database().ref("favList");
-    dbRef.child(restaurantKey).remove();
-  }
 
-  removeWant = (restaurantKey) => {
-    const dbRef = firebase.database().ref("wantList");
-    dbRef.child(restaurantKey).remove();
-  }
 
   render(){
     return (
       <div className="App">
-        <h1>hello world</h1>
-        <form>
-          <input 
-            type="text" 
-            name="restaurantChoice" 
-            id="restaurantChoice"
-            onChange={this.handleChange}
-            value={this.state.userInput}
-          />
-          <label htmlFor="restaurantChoice">type in the restaurant list</label>
-          <button onClick={this.wantButtonHandler}>add to want list</button>
-          <button onClick={this.favButtonHandler}>add to favourite list</button>
-        </form>
+        <h1>restaurant saver</h1>
+        <Form handleChange={this.handleChange} userInput={this.state.userInput} want={this.wantButtonHandler} fav={this.favButtonHandler}/>
         <section className="autocomplete wrapper"></section>
         <section className="allLists wrapper">
           <section className="list wantToTry">
             <h3>want to try</h3>
             <ul>
-              <List listType={this.state.wantToTry}/>
+              <List listType={this.state.wantToTry} refKey="wantList"/>
             </ul>
           </section>
-          {/* <FavList /> */}
           <section className="list favourites">
             <h3>favourite restaurants</h3>
             <ul>
-              <List listType={this.state.favourites} />
+              <List listType={this.state.favourites} refKey="favList"/>
             </ul>
           </section>
         </section>
