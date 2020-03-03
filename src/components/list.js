@@ -14,18 +14,24 @@ function List(props){
             if (restaurant.name) {
                 return(
                     <li key={restaurant.key} >
-                        <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
-                        <p>{restaurant.type}</p>
-                        <button><FontAwesomeIcon icon={faPencilAlt} /></button>
-                        <button onClick={() => {removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                        <div className="infoBox">
+                            <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
+                            <p>{restaurant.type}</p>
+                        </div>
+                        <div className="buttonBox">
+                            <button><FontAwesomeIcon icon={faPencilAlt} /></button>
+                            <button onClick={() => {removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                        </div>
                     </li>
                 )
             } else {
                 return(
                     <li key={index} >
-                        <h4>hello</h4>
-                        <button><FontAwesomeIcon icon={faPencilAlt} /></button>
-                        <button onClick={() => { removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                        <h4 className="infoBox">hello</h4>
+                        <div className="buttonBox">
+                            <button><FontAwesomeIcon icon={faPencilAlt} /></button>
+                            <button onClick={() => { removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                        </div>
                     </li>
                 )
             }

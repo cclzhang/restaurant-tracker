@@ -30,7 +30,6 @@ class Button extends Component {
             }
             dbRef.push(array);
             console.log(response.data.restaurants);
-            this.findMatches(this.props.userInput, response.data.restaurants)
             this.setState({
                 userInput: "",
             })

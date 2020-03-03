@@ -78,7 +78,7 @@ class Form extends Component {
     }
     render(){
         return(
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={this.submitHandler} className="wrapper">
                 <input
                     type="search"
                     name="restaurantChoice"
@@ -101,8 +101,10 @@ class Form extends Component {
                 }
                 <label htmlFor="restaurantChoice">type in the restaurant list</label>
                 <button className="invisible" type="submit" tabIndex="-1"></button>
-                <Button refKey="wantList" userInput={this.state.userInput} btnDetails="add to want list"/>
-                <Button refKey="favList" userInput={this.state.userInput} btnDetails="add to fav list"/>
+                <div className="buttonDetails">
+                    <Button refKey="wantList" userInput={this.state.userInput} btnDetails="add to wants"/>
+                    <Button refKey="favList" userInput={this.state.userInput} btnDetails="add to favourites"/>
+                </div>
             </form>
         )
     }

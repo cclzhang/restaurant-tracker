@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
 // import axios from 'axios';
-import List from './components/List'
-import Form from './components/Form'
-
+import List from './components/List';
+import Form from './components/Form';
 import './App.css';
 
 
@@ -63,18 +62,19 @@ class App extends Component{
         <Form want={this.wantButtonHandler} fav={this.favButtonHandler}/>
         <section className="allLists wrapper">
           <section className="list wantToTry">
-            <h3>want to try</h3>
+            <h2>want to try</h2>
             <ul>
               <List listType={this.state.wantToTry} refKey="wantList"/>
             </ul>
           </section>
           <section className="list favourites">
-            <h3>favourite restaurants</h3>
+            <h2>favourite restaurants</h2>
             <ul>
               <List listType={this.state.favourites} refKey="favList"/>
             </ul>
           </section>
         </section>
+        <footer>&copy; <a href="http://cecilezhang.com/">Cecile Zhang</a> 2020 </footer>
       </div>
     );
   }
