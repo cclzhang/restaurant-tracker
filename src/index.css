@@ -60,14 +60,27 @@ form {
   position: relative;
 }
 
-.autocomplete {
-  /* width: 600px;
-  height: 200px; */
+.autoComplete {
   position: absolute;
-  background: black;
-  color: white;
+  top: 30px;
+  /* background: black;
+  color: white; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 section.invisible {
   display: none;
+}
+
+.autoComplete button{
+  width: 100%;
+  z-index: 100;
+}
+
+.autoComplete button:hover{
+  background: black;
+  color: white;
+  cursor: pointer;
 }
