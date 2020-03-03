@@ -56,8 +56,18 @@ form {
   min-width: 300px;
 }
 
-.autocomplete {
-  width: 600px;
-  height: 200px;
+.box {
+  position: relative;
 }
 
+.autocomplete {
+  /* width: 600px;
+  height: 200px; */
+  position: absolute;
+  background: black;
+  color: white;
+}
+
+section.invisible {
+  display: none;
+}

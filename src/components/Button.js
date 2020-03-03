@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import axios from 'axios';
+import '../css/Button.css'
 
 class Button extends Component {
     buttonHandler = (e) => {
@@ -21,6 +22,7 @@ class Button extends Component {
                 radius: 1000,
             }
         }).then((response) => {
+            console.log(response)
             const array = {
                 name: response.data.restaurants[0].restaurant.name,
                 type: response.data.restaurants[0].restaurant.cuisines,
@@ -33,6 +35,10 @@ class Button extends Component {
                 userInput: "",
             })
         })
+    }
+    button = (e) =>{
+        e.preventDefault();
+        console.log('error')
     }
 
     findMatches = (wordToMatch, restaurants) => {
@@ -49,7 +55,8 @@ class Button extends Component {
 
     render(){
         return(
-        <button onClick={this.buttonHandler}>{this.props.btnDetails}</button>
+            !(this.props.userInput.replace(/\s/g, '')) ? <button onClick={this.button}>{this.props.btnDetails}</button>
+                : <button onClick={this.buttonHandler}>{this.props.btnDetails}</button>
         )
     }
 }
