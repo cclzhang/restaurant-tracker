@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import Button from './Button'
 import AutoComplete from './AutoComplete'
 
@@ -9,6 +10,7 @@ class Form extends Component {
             userInput: "",
             restaurants: [],
             autoComplete: false,
+            visibility: false,
         }
     }
 
@@ -21,29 +23,32 @@ class Form extends Component {
             })
         } else {
             console.log(e.target.value);
-            //   axios({
+            // axios({
             //     url: 'https://developers.zomato.com/api/v2.1/search',
             //     method: 'GET',
             //     responseType: 'json',
             //     params: {
-            //       apikey: '3a17fa134b021257dcadfb7e21140fdb',
+            //         apikey: '3a17fa134b021257dcadfb7e21140fdb',
             //       // sort: 'rating',
-            //       q: e.target.value,
-            //       count: 5,
-            //       lat: 43.653908,
-            //       lon: -79.384293,
-            //       radius: 1000,
+            //         q: e.target.value,
+            //         count: 5,
+            //         lat: 43.653908,
+            //         lon: -79.384293,
+            //         radius: 1000,
             //     }
-            //   }).then(response=>{
+            // }).then(response=>{
             //     console.log(response.data.restaurants);
-            //     this.setState({
-            //       autoComplete: true,
-            //       restaurants: response.data.restaurants,
+            //     this.setState({                
+            //         autoComplete: true,
+            //         restaurants: response.data.restaurants,
             //     })
-            //   }).catch(error=>{
+            // }).catch(error=>{
             //     console.log(error);
+            // })
 
-            //   })
+            // this.setState({
+            //     userInput: e.target.value,
+            // })
             const array = ["hi", "hello", "again", "test", "trail"]
             this.setState({
                 userInput: e.target.value,
@@ -53,9 +58,10 @@ class Form extends Component {
         }
     }
 
-    selectedHandler = (param) => {
+    selectedHandler = (e, item) => {
+        e.preventDefault();
         this.setState({
-            userInput: param,
+            userInput: item,
         })
     }
 
@@ -73,10 +79,19 @@ class Form extends Component {
                     value={this.state.userInput}
                 />
                 {this.state.autoComplete 
-                    ? <AutoComplete class="autoComplete" show={this.state.restaurants} handler={this.selectedHandler} /> 
-                    : <AutoComplete class="invisible" show={this.state.restaurants} handler={this.selectedHandler} />}
+                    ? <AutoComplete 
+                        class="autoComplete" 
+                        show={this.state.restaurants} 
+                        handler={this.selectedHandler} 
+                    /> 
+                    : <AutoComplete 
+                        class="invisible" 
+                        show={this.state.restaurants} 
+                        handler={this.selectedHandler} 
+                    />
+                }
                 <label htmlFor="restaurantChoice">type in the restaurant list</label>
-                <button className="invisible" type="submit" tabIndex="-1">hello</button>
+                <button className="invisible" type="submit" tabIndex="-1"></button>
                 <Button refKey="wantList" userInput={this.state.userInput} btnDetails="add to want list"/>
                 <Button refKey="favList" userInput={this.state.userInput} btnDetails="add to fav list"/>
             </form>

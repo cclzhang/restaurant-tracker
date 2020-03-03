@@ -56,15 +56,13 @@ form {
   min-width: 300px;
 }
 
-.box {
+form {
   position: relative;
 }
 
 .autoComplete {
   position: absolute;
-  top: 30px;
-  /* background: black;
-  color: white; */
+  top: 25px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,12 +72,13 @@ section.invisible {
   display: none;
 }
 
-.autoComplete button{
+.detailsBin{
   width: 100%;
   z-index: 100;
+  background: white;
 }
 
-.autoComplete button:hover{
+.detailsBin:hover{
   background: black;
   color: white;
   cursor: pointer;

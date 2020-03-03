@@ -36,21 +36,10 @@ class Button extends Component {
             })
         })
     }
+    
     button = (e) =>{
         e.preventDefault();
         console.log('error')
-    }
-
-    findMatches = (wordToMatch, restaurants) => {
-        const array = restaurants.filter(restaurant => {
-            const regEx = new RegExp(wordToMatch);
-            return restaurant.restaurant;
-            // console.log(restaurant)
-        })
-        // console.log(array.map((restaurant)=>{
-        //   console.log(restaurant.restaurant.name)
-        //   console.log(restaurant.restaurant.url)
-        // }))
     }
 
     render(){

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-import axios from 'axios';
+// import axios from 'axios';
 import List from './components/List'
 import Form from './components/Form'
-import AutoComplete from './components/AutoComplete'
 
 import './App.css';
 
@@ -12,9 +11,6 @@ class App extends Component{
   constructor() {
     super();
     this.state = {
-      userInput: "",
-      // restaurants: [],
-      // autoComplete: false,
       favourites: [],
       wantToTry: [],
     }
@@ -60,57 +56,11 @@ class App extends Component{
     });
   }
 
-
-  // handleChange = (e) => {
-  //   if (!(e.target.value.replace(/\s/g, ''))){
-  //     console.log("empty")
-  //     this.setState({
-  //       autoComplete: !this.state.autoComplete,
-  //       userInput: e.target.value,
-  //     })
-  //   }else{
-  //     console.log(e.target.value);
-  //     //   axios({
-  //     //     url: 'https://developers.zomato.com/api/v2.1/search',
-  //     //     method: 'GET',
-  //     //     responseType: 'json',
-  //     //     params: {
-  //     //       apikey: '3a17fa134b021257dcadfb7e21140fdb',
-  //     //       // sort: 'rating',
-  //     //       q: e.target.value,
-  //     //       count: 5,
-  //     //       lat: 43.653908,
-  //     //       lon: -79.384293,
-  //     //       radius: 1000,
-  //     //     }
-  //     //   }).then(response=>{
-  //     //     console.log(response.data.restaurants);
-  //     //     this.setState({
-  //     //       autoComplete: true,
-  //     //       restaurants: response.data.restaurants,
-  //     //     })
-  //     //   }).catch(error=>{
-  //     //     console.log(error);
-
-  //     //   })
-  //     const array = ["hi", "hello", "again", "test", "trail"]
-  //     this.setState({
-  //       userInput: e.target.value,
-  //       autoComplete: true,
-  //       restaurants: array,
-  //     })
-  //   }
-  // }
-
-
   render(){
     return (
       <div className="App">
         <h1>restaurant saver</h1>
-        <div className="box">
-          {/* {this.state.autoComplete ? <AutoComplete class="autoComplete" show={this.state.restaurants} /> : <AutoComplete class="invisible" show={this.state.restaurants} />} */}
-          <Form want={this.wantButtonHandler} fav={this.favButtonHandler}/>
-        </div>
+        <Form want={this.wantButtonHandler} fav={this.favButtonHandler}/>
         <section className="allLists wrapper">
           <section className="list wantToTry">
             <h3>want to try</h3>
