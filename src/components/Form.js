@@ -10,7 +10,6 @@ class Form extends Component {
             userInput: "",
             restaurants: [],
             autoComplete: false,
-            visibility: false,
         }
     }
 
@@ -45,7 +44,6 @@ class Form extends Component {
             // }).catch(error=>{
             //     console.log(error);
             // })
-
             // this.setState({
             //     userInput: e.target.value,
             // })
@@ -62,8 +60,18 @@ class Form extends Component {
         e.preventDefault();
         this.setState({
             userInput: item,
+            autoComplete: !this.state.autoComplete,
         })
     }
+    handleKeyPress = (keyPressed) => {
+        console.log(keyPressed.key)
+        if (keyPressed.key === 'Enter') {
+            this.setState({
+                autoComplete: !this.state.autoComplete,
+            })
+        }
+    }
+
 
     submitHandler(e) {
         e.preventDefault();
@@ -77,6 +85,7 @@ class Form extends Component {
                     id="restaurantChoice"
                     onChange={this.handleChange}
                     value={this.state.userInput}
+                    onKeyPress={this.handleKeyPress}
                 />
                 {this.state.autoComplete 
                     ? <AutoComplete 

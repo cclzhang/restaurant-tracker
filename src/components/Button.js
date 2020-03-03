@@ -34,9 +34,16 @@ class Button extends Component {
             this.setState({
                 userInput: "",
             })
+        }).catch((error)=>{
+            console.log(error);
+            // alert("cannot find what you are looking for")
+            dbRef.push(this.props.userInput);
+            this.setState({
+                userInput: "",
+            })
         })
     }
-    
+
     button = (e) =>{
         e.preventDefault();
         console.log('error')

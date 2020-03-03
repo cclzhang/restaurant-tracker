@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
 class AutoComplete extends Component {
-    constructor(){
-        super()
-        this.state = {
-            target: false,
-        }
-    }
-
     render(){
         return(
             <section className="autoComplete" className={this.props.class}>

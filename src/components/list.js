@@ -10,15 +10,25 @@ function List(props){
     }
 
     return (
-        props.listType.map((restaurant) => {
-            return(
-                <li key={restaurant.key} >
-                    <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
-                    <p>{restaurant.type}</p>
-                    <button><FontAwesomeIcon icon={faPencilAlt} /></button>
-                    <button onClick={() => {removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
-                </li>
-            )
+        props.listType.map((restaurant, index) => {
+            if (restaurant.name) {
+                return(
+                    <li key={restaurant.key} >
+                        <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
+                        <p>{restaurant.type}</p>
+                        <button><FontAwesomeIcon icon={faPencilAlt} /></button>
+                        <button onClick={() => {removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                    </li>
+                )
+            } else {
+                return(
+                    <li key={index} >
+                        <h4>hello</h4>
+                        <button><FontAwesomeIcon icon={faPencilAlt} /></button>
+                        <button onClick={() => { removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                    </li>
+                )
+            }
         })
     );
 }
