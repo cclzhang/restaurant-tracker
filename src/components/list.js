@@ -1,42 +1,66 @@
-import React from 'react';
+import React, {Component} from 'react';
 import firebase from '../firebase';
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function List(props){
-    const removeHandler = (restaurantKey) => {
-        const dbRef = firebase.database().ref(props.refKey);
+class List extends Component{
+    constructor(){
+        super();
+        this.state = {
+            visibility: false,
+        }
+    }
+    removeHandler = (restaurantKey) => {
+        const dbRef = firebase.database().ref(this.props.refKey);
         dbRef.child(restaurantKey).remove();
     }
 
-    return (
-        props.listType.map((restaurant, index) => {
-            if (restaurant.name) {
+    infoBox = (name, url, type) =>{
+        return (
+            <div className="infoBox">
+                <h4><a href={url}>{name}</a></h4>
+                <p>{type}</p>
+            </div>
+        )
+    }
+
+    classDecider = ()=>{
+        if (this.state.visibility) {
+            return "editInput"
+        } else {
+            return "editInput hidden"
+        }
+    }
+
+    editClick = (e)=>{
+        e.preventDefault();
+        this.setState({
+            visibility: !this.state.visibility,
+        })
+    }
+
+    render(){
+        return (
+            this.props.listType.map((restaurant, index) => {
                 return(
                     <li key={restaurant.key} >
-                        <div className="infoBox">
-                            <h4><a href={restaurant.url}>{restaurant.name}</a></h4>
-                            <p>{restaurant.type}</p>
+                        {restaurant.name ? 
+                            this.infoBox(restaurant.name, restaurant.url, restaurant.type) 
+                            : <h4 className="infoBox">{restaurant.data}</h4>}
+                        <div className={this.classDecider()}>
+                            <input type="search" id="edit" />
+                            <label htmlFor="edit">type another restaurant</label>
+                            <button>edit</button>
                         </div>
                         <div className="buttonBox">
-                            <button><FontAwesomeIcon icon={faPencilAlt} /></button>
-                            <button onClick={() => {removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
+                            <button id={index} onClick={e=> this.editClick(e)}><FontAwesomeIcon icon={faPencilAlt} /></button>
+                            <button onClick={() => {this.removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
                         </div>
                     </li>
                 )
-            } else {
-                return(
-                    <li key={index} >
-                        <h4 className="infoBox">hello</h4>
-                        <div className="buttonBox">
-                            <button><FontAwesomeIcon icon={faPencilAlt} /></button>
-                            <button onClick={() => { removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
-                        </div>
-                    </li>
-                )
-            }
-        })
-    );
+            })
+        )
+    }
 }
 
 export default List;

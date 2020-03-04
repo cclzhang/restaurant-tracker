@@ -4,54 +4,45 @@ import Button from './Button'
 import AutoComplete from './AutoComplete'
 
 class Form extends Component {
-    constructor(){
+    constructor(props){
         super();
         this.state = {
             userInput: "",
             restaurants: [],
-            autoComplete: false,
+            autoComplete: props.popup,
         }
     }
 
     handleChange = (e) => {
         if (!(e.target.value.replace(/\s/g, ''))) {
-            console.log("empty")
             this.setState({
                 autoComplete: false,
                 userInput: e.target.value,
             })
         } else {
-            console.log(e.target.value);
-            // axios({
-            //     url: 'https://developers.zomato.com/api/v2.1/search',
-            //     method: 'GET',
-            //     responseType: 'json',
-            //     params: {
-            //         apikey: '3a17fa134b021257dcadfb7e21140fdb',
-            //       // sort: 'rating',
-            //         q: e.target.value,
-            //         count: 5,
-            //         lat: 43.653908,
-            //         lon: -79.384293,
-            //         radius: 1000,
-            //     }
-            // }).then(response=>{
-            //     console.log(response.data.restaurants);
-            //     this.setState({                
-            //         autoComplete: true,
-            //         restaurants: response.data.restaurants,
-            //     })
-            // }).catch(error=>{
-            //     console.log(error);
-            // })
-            // this.setState({
-            //     userInput: e.target.value,
-            // })
-            const array = ["hi", "hello", "again", "test", "trail"]
+            axios({
+                url: 'https://developers.zomato.com/api/v2.1/search',
+                method: 'GET',
+                responseType: 'json',
+                params: {
+                    apikey: '3a17fa134b021257dcadfb7e21140fdb',
+                  // sort: 'rating',
+                    q: e.target.value,
+                    count: 5,
+                    lat: 43.653908,
+                    lon: -79.384293,
+                    radius: 1000,
+                }
+            }).then(response=>{
+                this.setState({                
+                    autoComplete: true,
+                    restaurants: response.data.restaurants,
+                })
+            }).catch(() => {
+                console.log("we could not find the restaurant you were looking for")
+            })
             this.setState({
                 userInput: e.target.value,
-                autoComplete: true,
-                restaurants: array,
             })
         }
     }
@@ -64,14 +55,12 @@ class Form extends Component {
         })
     }
     handleKeyPress = (keyPressed) => {
-        console.log(keyPressed.key)
         if (keyPressed.key === 'Enter') {
             this.setState({
                 autoComplete: !this.state.autoComplete,
             })
         }
     }
-
 
     submitHandler(e) {
         e.preventDefault();

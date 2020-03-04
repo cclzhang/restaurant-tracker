@@ -3,19 +3,16 @@ import React, { Component } from 'react';
 class AutoComplete extends Component {
     render(){
         return(
-            <section className="autoComplete" className={this.props.class}>
-            {this.props.show.map((item, index) => {
+            <section className={this.props.class}>
+            {this.props.show.map((item) => {
                 return (
                     <div
                         className="detailsBin"
-                        // key={item.restaurant.id} 
-                        key={index}
-                        // onClick={e => this.props.handler(e, item.restaurant.name)} 
-                        onClick={e => this.props.handler(e, item)} 
+                        key={item.restaurant.id} 
+                        onClick={e => this.props.handler(e, item.restaurant.name)} 
                     >
-                        {/* <h4>{item.restaurant.name}</h4>
-                        <p>{item.restaurant.location.address}</p>    */}
-                        <p>{item}</p>  
+                        <h4>{item.restaurant.name}</h4>
+                        <p>{item.restaurant.location.address}</p>   
                     </div>           
                 )
             })}

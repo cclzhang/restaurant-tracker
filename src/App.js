@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-// import axios from 'axios';
 import List from './components/List';
 import Form from './components/Form';
 import './App.css';
@@ -12,13 +11,14 @@ class App extends Component{
     this.state = {
       favourites: [],
       wantToTry: [],
+      autoComplete: false,
+      userInput: '',
     }
   }
   componentDidMount() {
     const favDbRef = firebase.database().ref("favList");
     const wantDbRef = firebase.database().ref("wantList");
     favDbRef.on('value', (response) => {
-      // console.log(response.val())
       const favFromDb = response.val();
       const favToBeSet = [];
       for (let key in favFromDb) {
@@ -27,16 +27,15 @@ class App extends Component{
           name: favFromDb[key].name,
           url: favFromDb[key].url,
           type: favFromDb[key].type,
+          data: favFromDb[key],
         }
         favToBeSet.push(restaurantInfo);
-        // console.log(wantFromDb[key]);
       }
       this.setState({
         favourites: favToBeSet,
       })
     });
     wantDbRef.on('value', (response) => {
-      // console.log(response.val())
       const wantFromDb = response.val();
       const wantToBeSet = [];
       for (let key in wantFromDb) {
@@ -45,9 +44,9 @@ class App extends Component{
           name: wantFromDb[key].name,
           url: wantFromDb[key].url,
           type: wantFromDb[key].type,
+          data: wantFromDb[key],
         }
         wantToBeSet.push(restaurantInfo);
-        // console.log(wantFromDb[key]);
       }
       this.setState({
         wantToTry: wantToBeSet,
@@ -59,7 +58,7 @@ class App extends Component{
     return (
       <div className="App">
         <h1>restaurant saver</h1>
-        <Form want={this.wantButtonHandler} fav={this.favButtonHandler}/>
+        <Form want={this.wantButtonHandler} fav={this.favButtonHandler} popup={this.state.autoComplete} />
         <section className="allLists wrapper">
           <section className="list wantToTry">
             <h2>want to try</h2>

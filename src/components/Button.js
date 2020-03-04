@@ -6,7 +6,6 @@ import '../css/Button.css'
 class Button extends Component {
     buttonHandler = (e) => {
         e.preventDefault();
-        console.log(this.props.refKey)
         const dbRef = firebase.database().ref(this.props.refKey);
         axios({
             url: 'https://developers.zomato.com/api/v2.1/search',
@@ -22,20 +21,16 @@ class Button extends Component {
                 radius: 1000,
             }
         }).then((response) => {
-            console.log(response)
             const array = {
                 name: response.data.restaurants[0].restaurant.name,
                 type: response.data.restaurants[0].restaurant.cuisines,
                 url: response.data.restaurants[0].restaurant.url,
             }
             dbRef.push(array);
-            console.log(response.data.restaurants);
             this.setState({
                 userInput: "",
             })
-        }).catch((error)=>{
-            console.log(error);
-            // alert("cannot find what you are looking for")
+        }).catch(()=>{
             dbRef.push(this.props.userInput);
             this.setState({
                 userInput: "",
@@ -43,10 +38,10 @@ class Button extends Component {
         })
     }
 
-    button = (e) =>{
-        e.preventDefault();
-        console.log('error')
-    }
+    // button = (e) =>{
+    //     e.preventDefault();
+    //     console.log('error')
+    // }
 
     render(){
         return(
