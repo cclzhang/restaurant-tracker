@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Space Mono';
+  src: local('Space Mono'), url(../fonts/SpaceMono-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: local('Teko'), url(../fonts/Teko-Regular.ttf) format('truetype');
+}
+
+html {
+  font-family: 'Space Mono', 'Courier New', 'Courier';
+}
+
+h1,
+h2, 
+.buttonDetails button, 
+.editInput button {
+  font-family: 'Teko', 'Impact', 'Courier';
+  letter-spacing: 0.4px;
+}
+
+input[type="search"] {
+  font-family: 'Space Mono', 'Courier New', 'Courier';
+}

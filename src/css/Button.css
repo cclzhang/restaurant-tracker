@@ -3,3 +3,7 @@
     display: absolute;
     z-index: -100;
 }
+
+button {
+    width: 150px;
+}

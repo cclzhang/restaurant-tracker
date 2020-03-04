@@ -1,0 +1,54 @@
+.infoBox {
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    font-style: italic;
+    margin: 1.5px 0;
+}
+
+.buttonBox {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.buttonBox button {
+    font-size: 1.7rem;
+    width: 36px;
+    height: 36px;
+}
+
+
+.editInput.hidden {
+    display: none;
+}
+
+.editInput {
+    position: absolute;
+    width: calc(100% - 90px);
+    height: 100%;
+    background: white;
+}
+
+.editInput button {
+    font-size: 2.5rem;
+    width: 20%;
+    background: rgb(224, 231, 221);
+    color: rgb(78, 60, 82);
+}
+
+.editInput input[type="search"]{
+    width: 80%;
+    background: white;
+    border: 2px solid rgb(78, 60, 82);
+}
+
+.editInput input[type="search"]:focus{
+    width: 80%;
+    background: rgb(78, 60, 82);
+    color: white;
+}

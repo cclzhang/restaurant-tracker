@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Button from './Button'
 import AutoComplete from './AutoComplete'
+import '../css/Form.css'
 
 class Form extends Component {
     constructor(props){
@@ -91,8 +92,8 @@ class Form extends Component {
                 <label htmlFor="restaurantChoice">type in the restaurant list</label>
                 <button className="invisible" type="submit" tabIndex="-1"></button>
                 <div className="buttonDetails">
-                    <Button refKey="wantList" userInput={this.state.userInput} btnDetails="add to wants"/>
-                    <Button refKey="favList" userInput={this.state.userInput} btnDetails="add to favourites"/>
+                    <Button refKey="wantList" userInput={this.state.userInput} btnDetails="+ to wants"/>
+                    <Button refKey="favList" userInput={this.state.userInput} btnDetails="+ to favourites"/>
                 </div>
             </form>
         )

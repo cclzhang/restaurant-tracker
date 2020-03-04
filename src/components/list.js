@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import firebase from '../firebase';
 import { faTrashAlt, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../css/List.css'
 
 class List extends Component{
     constructor(){
@@ -19,7 +20,7 @@ class List extends Component{
         return (
             <div className="infoBox">
                 <h4><a href={url}>{name}</a></h4>
-                <p>{type}</p>
+                <p>-- {type}</p>
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/AutoComplete.css';
 
 class AutoComplete extends Component {
     render(){
@@ -12,7 +13,7 @@ class AutoComplete extends Component {
                         onClick={e => this.props.handler(e, item.restaurant.name)} 
                     >
                         <h4>{item.restaurant.name}</h4>
-                        <p>{item.restaurant.location.address}</p>   
+                        <p>-- {item.restaurant.location.address}</p>   
                     </div>           
                 )
             })}
