@@ -1,3 +1,13 @@
+# A Simple Dashboard
+
+<p>This app allows you to search for restaurants in Toronto and add them to one of two lists.</p>
+
+<h2>License</h2>
+
+<p>Copyright &copy; 2020 Cecile Zhang. All rights reserved.</p>
+
+<p>Licensed under the <a href="./LICENSE">MIT License.</a></p>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
