@@ -1,14 +1,14 @@
 # A Simple Dashboard
 
-<p>This app allows you to search for restaurants in Toronto and add them to one of two lists.</p>
+This app allows you to search for restaurants in Toronto and add them to one of two lists.
 
-<h2>License</h2>
+## License
 
-<p>Copyright &copy; 2020 Cecile Zhang. All rights reserved.</p>
+Copyright &copy; Cecile Zhang. All rights reserved.
 
-<p>Licensed under the <a href="./LICENSE">MIT License.</a></p>
+Licensed under the [MIT License](./LICENSE).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
@@ -76,3 +76,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
