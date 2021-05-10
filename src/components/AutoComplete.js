@@ -9,11 +9,11 @@ class AutoComplete extends Component {
                 return (
                     <div
                         className="detailsBin"
-                        key={item.restaurant.id} 
-                        onClick={e => this.props.handler(e, item.restaurant.name)} 
+                        key={item.restaurant.id}
+                        onClick={e => this.props.handler(e, item.restaurant.name)}
                     >
                         <h4>{item.restaurant.name}</h4>
-                        <p>-- {item.restaurant.location.address}</p>   
+                        <p>-- {item.restaurant.location.address}</p>
                     </div>           
                 )
             })}

@@ -38,10 +38,10 @@ class Button extends Component {
         })
     }
 
-    // button = (e) =>{
-    //     e.preventDefault();
-    //     console.log('error')
-    // }
+    button = (e) =>{
+        e.preventDefault();
+        console.log('error')
+    }
 
     render(){
         return(
