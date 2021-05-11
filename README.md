@@ -1,4 +1,4 @@
-# A Simple Dashboard
+# Track Your Restaurants
 
 This app allows you to search for restaurants in Toronto and add them to one of two lists.
 
