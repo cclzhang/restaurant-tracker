@@ -1,4 +1,4 @@
-# Track Your Restaurants
+# [Restaurant Tracker](https://cclzhang.github.io/restaurant-tracker/)
 
 This app allows you to search for restaurants in Toronto and add them to one of two lists.
 
