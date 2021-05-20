@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/restaurant-tracker/static/css/main.812823e0.chunk.css",
-    "main.js": "/restaurant-tracker/static/js/main.fbe3f339.chunk.js",
-    "main.js.map": "/restaurant-tracker/static/js/main.fbe3f339.chunk.js.map",
+    "main.js": "/restaurant-tracker/static/js/main.bed2cdfb.chunk.js",
+    "main.js.map": "/restaurant-tracker/static/js/main.bed2cdfb.chunk.js.map",
     "runtime-main.js": "/restaurant-tracker/static/js/runtime-main.00f0b1dd.js",
     "runtime-main.js.map": "/restaurant-tracker/static/js/runtime-main.00f0b1dd.js.map",
-    "static/js/2.204882e7.chunk.js": "/restaurant-tracker/static/js/2.204882e7.chunk.js",
-    "static/js/2.204882e7.chunk.js.map": "/restaurant-tracker/static/js/2.204882e7.chunk.js.map",
+    "static/js/2.dcb6b64d.chunk.js": "/restaurant-tracker/static/js/2.dcb6b64d.chunk.js",
+    "static/js/2.dcb6b64d.chunk.js.map": "/restaurant-tracker/static/js/2.dcb6b64d.chunk.js.map",
     "index.html": "/restaurant-tracker/index.html",
     "static/css/main.812823e0.chunk.css.map": "/restaurant-tracker/static/css/main.812823e0.chunk.css.map",
-    "static/js/2.204882e7.chunk.js.LICENSE.txt": "/restaurant-tracker/static/js/2.204882e7.chunk.js.LICENSE.txt",
+    "static/js/2.dcb6b64d.chunk.js.LICENSE.txt": "/restaurant-tracker/static/js/2.dcb6b64d.chunk.js.LICENSE.txt",
     "static/media/fontFamily.css": "/restaurant-tracker/static/media/Teko-Regular.7a95ca68.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.00f0b1dd.js",
-    "static/js/2.204882e7.chunk.js",
+    "static/js/2.dcb6b64d.chunk.js",
     "static/css/main.812823e0.chunk.css",
-    "static/js/main.fbe3f339.chunk.js"
+    "static/js/main.bed2cdfb.chunk.js"
   ]
 }
