@@ -9,6 +9,16 @@ p {
     margin: 1.5px 0;
 }
 
+button:disabled {
+    background-color:rgb(230, 230, 230);
+    cursor: initial;
+    color: rgb(255, 255, 255);
+}
+
+button:disabled:hover {
+    /* background-color: inherit; */
+}
+
 .buttonBox {
     width: 80px;
     display: flex;

@@ -49,12 +49,12 @@ class List extends Component{
                             this.infoBox(restaurant.name, restaurant.url, restaurant.type) 
                             : <h4 className="infoBox">{restaurant.data}</h4>}
                         <div className={this.classDecider()}>
-                            <input type="search" id="edit" />
+                            <input type="search" id="edit"/>
                             <label htmlFor="edit">type another restaurant</label>
                             <button>edit</button>
                         </div>
                         <div className="buttonBox">
-                            <button id={index} onClick={e=> this.editClick(e)}><FontAwesomeIcon icon={faPencilAlt} /></button>
+                            <button disabled id={index} onClick={e=> this.editClick(e)}><FontAwesomeIcon icon={faPencilAlt} /></button>
                             <button onClick={() => {this.removeHandler(restaurant.key) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
                         </div>
                     </li>
